@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEO-KICKS | Tienda Oficial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-left">
+            <div class="logo">NEO<span class="acid">KICKS.</span></div>
+        </div>
+        
+        <div class="nav-links desktop-only">
+            <a href="#drops">LANZAMIENTOS</a>
+            <a href="#collection">COLECCIÓN</a>
+            <a href="#vision">VISIÓN</a>
+        </div>
+
+        <div class="nav-right">
+            <div class="nav-icon cart-trigger" onclick="toggleCart()">
+                CART [<span id="cart-count">0</span>]
+            </div>
+            <div class="hamburger" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#drops" onclick="toggleMenu()">LANZAMIENTOS</a>
+        <a href="#collection" onclick="toggleMenu()">COLECCIÓN</a>
+        <a href="#vision" onclick="toggleMenu()">VISIÓN</a>
+        <a href="#" onclick="toggleMenu()">CONTACTO</a>
+    </div>
+
+    <header class="hero">
+        <div class="hero-text">
+            <h1>PISA EL <br><span class="outlined-text">FUTURO</span></h1>
+            <p>Diseño experimental. Gravedad cero. Edición limitada.</p>
+            <a href="#drops" class="btn-acid">VER CATÁLOGO</a>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?q=80&w=600&auto=format&fit=crop" alt="Sneaker" class="floating-shoe">
+        </div>
+    </header>
+
+    <section id="drops" class="container">
+        <div class="drop-info-banner">
+            <div class="drop-status">
+                <span class="live-dot"></span> LIVE DROP
+            </div>
+            <h2>TEMPORADA <span class="acid">2024 / Q1</span></h2>
+            <p>La nueva serie "Cyber-Organic" ya está disponible. Materiales reactivos que cambian con la temperatura.</p>
+        </div>
+
+        <div class="section-header">
+            <h3>CATÁLOGO DISPONIBLE</h3>
+        </div>
+
+        <div class="toolbar">
+            <div class="search-box">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Buscar modelo...">
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">TODOS</button>
+                <button class="filter-btn" data-filter="nike">NIKE</button>
+                <button class="filter-btn" data-filter="jordan">JORDAN</button>
+                <button class="filter-btn" data-filter="adidas">ADIDAS</button>
+            </div>
+        </div>
+
+        <div class="products-grid" id="productsContainer">
+            <div class="product-card" data-category="nike" data-tilt>
+                <div class="card-badge">NUEVO</div>
+                <div class="card-img" onclick="openProductModal('cyber-force')">
+                    <img src="https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?q=80&w=600&auto=format&fit=crop" loading="lazy" alt="Nike Air">
+                </div>
+                <div class="card-info">
+                    <h3>CYBER FORCE 1</h3>
+                    <div class="card-bottom">
+                        <span class="price">$180</span>
+                        <button class="btn-add" onclick="addToCart('Cyber Force', 180)">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="nike" data-tilt>
+                <div class="card-badge">HOT</div>
+                <div class="card-img" onclick="openProductModal('acid-dunk')">
+                    <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?q=80&w=600&auto=format&fit=crop" loading="lazy" alt="Dunk Low">
+                </div>
+                <div class="card-info">
+                    <h3>ACID DUNK LOW</h3>
+                    <div class="card-bottom">
+                        <span class="price">$220</span>
+                        <button class="btn-add" onclick="addToCart('Acid Dunk', 220)">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="jordan" data-tilt>
+                <div class="card-img" onclick="openProductModal('void-jordan')">
+                    <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?q=80&w=600&auto=format&fit=crop" loading="lazy" alt="Jordan 1">
+                </div>
+                <div class="card-info">
+                    <h3>VOID JORDAN 1</h3>
+                    <div class="card-bottom">
+                        <span class="price">$250</span>
+                        <button class="btn-add" onclick="addToCart('Void Jordan', 250)">+</button>
+                    </div>
+                </div>
+            </div>
+
+             <div class="product-card" data-category="adidas" data-tilt>
+                <div class="card-img" onclick="openProductModal('yeezy-boost')">
+                    <img src="https://images.unsplash.com/photo-1587563871167-1ee9c731aef4?q=80&w=600&auto=format&fit=crop" loading="lazy" alt="Yeezy">
+                </div>
+                <div class="card-info">
+                    <h3>YEEZY BOOST</h3>
+                    <div class="card-bottom">
+                        <span class="price">$300</span>
+                        <button class="btn-add" onclick="addToCart('Yeezy Boost', 300)">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p id="no-results" style="display:none; text-align:center; color:gray; margin-top:20px;">No se encontraron productos.</p>
+    </section>
+
+    <section id="collection" class="collection-section">
+        <div class="collection-container">
+            <div class="collection-text" data-tilt> <div class="col-label">CONCEPTO</div>
+                <h2>THE <span class="acid">VOID</span><br>SERIES</h2>
+                <p>Nuestra última colección explora el vacío urbano. Diseños minimalistas con tecnología de confort extremo para los caminantes nocturnos.</p>
+                
+                <div class="collection-stats">
+                    <div class="stat-item">
+                        <span class="stat-num">04</span>
+                        <span class="stat-lbl">MODELOS</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num acid">LTD</span>
+                        <span class="stat-lbl">EDICIÓN</span>
+                    </div>
+                </div>
+                
+                <a href="#drops" class="btn-outline">VER LOOKBOOK</a>
+            </div>
+            
+            <div class="collection-visual">
+                <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=800&auto=format&fit=crop" alt="Collection Art">
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer" id="vision">
+        <div class="footer-grid">
+            <div class="footer-col brand-col">
+                <div class="footer-logo">NEO.</div>
+                <p>El futuro del streetwear. Envíos globales. Calidad premium.</p>
+            </div>
+            
+            <div class="footer-col links-col">
+                <h4>TIENDA</h4>
+                <a href="#">Lanzamientos</a>
+                <a href="#">Colección</a>
+                <a href="#">Outlet</a>
+            </div>
+
+            <div class="footer-col links-col">
+                <h4>SOPORTE</h4>
+                <a href="#">Envíos</a>
+                <a href="#">Devoluciones</a>
+                <a href="#">FAQ</a>
+            </div>
+
+            <div class="footer-col social-col">
+                <h4>COMUNIDAD</h4>
+                <div class="social-hub">
+                    <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="social-btn"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="social-btn"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#" class="social-btn"><i class="fa-brands fa-discord"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>ENGINEERED BY <span class="acid">ENIGMADESIGN</span> © 2024</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5491112345678" target="_blank" class="whatsapp-float">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <div class="cart-overlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>TU CARRITO</h3>
+            <button class="close-cart" onclick="toggleCart()">✕</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <div class="empty-cart" style="text-align:center; color:#666; margin-top:20px">VACÍO</div>
+        </div>
+        <div class="cart-footer">
+            <div class="total-row"><span>TOTAL</span> <span id="cart-total">$0.00</span></div>
+            <button class="btn-checkout">FINALIZAR COMPRA</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="productModalOverlay" onclick="closeProductModal()"></div>
+    <div class="modal-window" id="productModalWindow">
+        <button class="modal-close" onclick="closeProductModal()">✕</button>
+        <div class="modal-content">
+            <div class="modal-img-col">
+                <img id="m-img" src="" alt="Sneaker Detail">
+            </div>
+            <div class="modal-info-col">
+                <h2 id="m-title">MODEL NAME</h2>
+                <div class="m-price" id="m-price">$0.00</div>
+                <p class="m-desc" id="m-desc">Descripción...</p>
+                <div class="m-section">
+                    <h4>TALLES (US)</h4>
+                    <div class="sizes-grid" id="m-sizes"></div>
+                </div>
+                <div class="m-section">
+                    <h4>COLORES</h4>
+                    <div class="colors-flex" id="m-colors"></div>
+                </div>
+                <button class="btn-acid m-btn-add" id="m-add-btn">AGREGAR AL CARRITO</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
